@@ -6,7 +6,7 @@
 
 Name:           perl-GSSAPI
 Version:        0.26
-Release:        5%{?dist}
+Release:        5%{?dist}.goose.1
 Summary:        Perl extension providing access to the GSSAPIv2 library
 License:        GPL+ or Artistic
 Group:          Development/Libraries
@@ -32,7 +32,7 @@ iconv -f iso8859-1 -t utf8 < Changes > Changes.1 &&
 mv Changes.1 Changes
 
 %build
-. %{_sysconfdir}/profile.d/krb5-devel.sh
+#. %{_sysconfdir}/profile.d/krb5-devel.sh
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="$RPM_OPT_FLAGS"
 make %{?_smp_mflags}
 
@@ -62,6 +62,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/*
 
 %changelog
+* Thu Dec 29 2011 Ivan Makfinsky <ivan@gooseproject.org> - 0.26-5.goose.1
+- Commented out sourcing of krb5-devel.sh
+
 * Wed Feb 24 2010 Marcela Mašláňová <mmaslano@redhat.com> - 0.26-5
 - make rpmlint happy
 - Related: rhbz#543948
